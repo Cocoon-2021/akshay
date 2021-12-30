@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+    <link rel="stylesheet" href="/static/css/style2_detail.css">
+</head>
+    <body>
+        <h2>Event Registration Details</h2>
+        <em>Total:{{messages|length}}</em>
+        <table>
+            <tr>
+                <td>id</td>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>phone number</th>
+                    <th>No. of person</th>
+                    <th>Date</th>
+                    <th>Event name</th>
+                    <th>Location</th>
+                    <th>Food</th>
+                    <th>Drink</th>
+            </tr>
+            <tb>
+                {% for msg in messages %}
+                <tr>
+                    <td>{{msg.id}}</td>
+                    <td>{{msg.yname}}</td>
+                    <td>{{msg.yemail}}</td>
+                    <td>{{msg.pnum}}</td>
+                    <td>{{msg.person}}</td>
+                    <td>{{msg.date}}</td>
+                    <td>{{msg.yevent}}</td>
+                    <td>{{msg.location}}</td>
+                    <td>{{msg.foods}}</td>
+                    <td>{{msg.drink}}</td>
+                </tr>
+                {% endfor %}
+            </tb>
+        </table>
+    </body>
+</html>

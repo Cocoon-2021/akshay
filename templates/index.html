@@ -1,0 +1,97 @@
+
+<html>
+    <head>
+        <title>
+            Home page
+        </title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <script src="{% static 'script/script.js' %}"></script>
+    </head>
+    <body background="{% static 'images/wp2878153.jpg' %}">
+    <input type="button" value="login" onclick="window.location.href='/login'">
+        <div class="main">
+        <div class="headings">
+            <h1 >EVENT REGISTRATION FORM</h1>
+        </div>
+            <div class= "forms">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="tb">
+                        <label >Your name</label>
+                        <div class="flag">
+                            <input type="text" name="yname" id="yname" placeholder="your name" required>
+                        </div>
+                    </div>
+                    <div class="tb">
+                        <label>Your Email</label>
+                        <div class="flag">
+                            <input type="email" name="yemail" id="yemail"placeholder="your Email" required>
+                        </div>
+                    </div>
+                    <div class="tb">
+                        <label>Phone Number</label>
+                        <div class="flag">
+                            <input type="text" name="pnum" id="pnum" placeholder="your phone number" required>
+                        </div>
+                    </div>
+                    <div class="tb">
+                        <label>No. of Person</label>
+                        <div class="flag">
+                            <select name="person" id="person">
+                                <option>Select Numbers</option>
+                                <option>1-5</option>
+                                <option>5-10</option>
+                                <option>10-15</option>
+                                <option>15-20</option>
+                                <option>20-25</option>
+                                <option>25-30</option>
+                                <option>30-35</option>
+                                <option>35-40</option>
+                                <option>40-45</option>
+                                <option>45-50</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="tb">
+                        <label>Date/Time</label>
+                        <div class="flag">
+                            <input type="date" name="date" id="date">
+                            <input type="time" name="time" id="time" min="00:00" max="24:00">
+                        </div>
+                    </div>
+                    <div class="tb">
+                        <label>Your Event</label>
+                        <div class="flag">
+                            <input type="text" name="yevent" id="yevent" placeholder="your event" required>
+                        </div>
+                    </div>
+                    <div class="tb">
+                        <label>Location</label>
+                        <div class="flag">
+                            <input type="text" name="location" id="location" placeholder="your location" required>
+                        </div>
+                    </div>
+                    <div class="tb">
+                        <h3>PLEASE CHOOSE YOUR FAVOURITE FOOD</h3>
+
+                    <input type="radio" name="foods" value="veg" id="foods"> veg<br>
+                    <input type="radio"name="foods" value="nonveg" id="foods"> Non-veg<br>
+                    </div>
+                    <div class="tb">
+                    <h3>PLEASE CHOOSE YOUR FAVOURITE DRINK</h3>
+
+                    <input type="radio" name="drink" value="wine" id="drink"> Wine<br>
+                    <input type="radio" name="drink" value="whisky" id="drink"> Whisky<br>
+                    <input type="radio" name="drink" value="beer" id="drink"> Beer<br>
+                    <input type="radio" name="drink" value="none" id="drink"> None<br>
+                    </div>
+                    <br>
+                    <input type="submit" value="submit" onclick="verifyphnumber()">
+
+                </form>
+               </div>
+
+    </div>
+    </body>
+</html>

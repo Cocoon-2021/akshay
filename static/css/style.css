@@ -1,0 +1,94 @@
+body{
+    width: 100%;
+}
+.headings{
+    text-align: center;
+    padding: 10px;
+    color: red;
+    }
+
+label{
+     padding: 12px 12px 12px 0;
+     display: inline-block
+}
+
+.main{
+    padding: 5px;
+}
+
+.forms{
+    align-items: center;
+    justify-content: center;
+    display: table;
+    margin-left: 10.4cm;
+}
+
+form{
+    background-color: rgb(170, 94, 94);
+    flex-direction: column;
+    padding: 2px 3px;
+    max-width: 500px;
+    border-radius: 10px;
+    opacity: 0.6;
+}
+
+.tb:after{
+    content: "";
+    display: table;
+    clear: both;
+    margin-left: 0.5cm;
+
+}
+
+.flag{
+    float: right;
+    margin-right: 30px;
+    display: flex;
+    margin-bottom: 16px;
+}
+.radio{
+    margin-left: 5%;
+}
+input[type=text]{
+    display: table-cell;
+    margin-left: 2cm;
+    border-radius: 7px;
+    padding: 2px 25px 6px 4px;
+}
+
+input[type=email]{
+    display: table-cell;
+    margin-left: 2cm;
+    border-radius: 7px;
+    padding: 2px 25px 6px 4px;
+}
+
+input[type=date]{
+    display: table-cell;
+    margin-left: 2cm;
+    border-radius: 7px;
+    padding: 4px;
+}
+
+input[type=time]{
+    display: table-cell;
+    border-radius: 7px;
+    padding: 4px;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    margin-left: 0.7cm;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+input[type=button] {
+
+    float:right;
+}
