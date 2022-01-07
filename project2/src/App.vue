@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <blp msg="Basics"/>
-    <work msg="work"/>
+    <blp msg="Resume Builder Application"/>
+    <work msg1=""/>
   </div>
 </template>
 
