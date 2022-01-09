@@ -5,22 +5,15 @@
         
         <h4>{{head1}}</h4>
             <input type="text" placeholder="Name" required> <input type="text" placeholder="Label"><br>
-            <input type="text" placeholder="Image URL"> <input type="email" placeholder="E-mail"><br>
-            <input type="text" placeholder="phone"> <input type="text" placeholder="URL"><br>
+            <input type="text" placeholder="Image URL"> <input type="email" placeholder="E-mail" required><br>
+            <input type="text" placeholder="phone" required> <input type="text" placeholder="URL" required><br>
             <input type="text" placeholder="summary">
         <h4>{{head2}}</h4>
-            <input type="text" placeholder="Address"> <input type="text" placeholder="Postal code"><br>
-            <input type="text" placeholder="City"> <input type="text" placeholder="Country code"><br>
-            <input type="text" placeholder="Region"><br>
-            <h4>{{head3}}</h4>
-        <div 
-        v-for="(profile,count) in profiles"
-        v-bind:key="profile"><br>
-                <label >{{count+1}}:</label><br>
-                <input type="text" placeholder="Network" v-model="profile.network"> <input type="text" placeholder="Username" v-model="profile.username"><br>
-                <input type="text" placeholder="URL" v-model="profile.url"> <br>
-                
-        </div><br>
+            <input type="text" placeholder="Address" required> <input type="text" placeholder="Postal code" required><br>
+            <input type="text" placeholder="City" required> <input type="text" placeholder="Country code" required><br>
+            <input type="text" placeholder="Region" required><br>
+        <h4>{{head3}}</h4>
+            <profile :profiles="profiles"/><br>
         <button @click="addProfiles">+profile</button><br>
         <button class="btn-primary">Next</button>
     </form>
@@ -28,10 +21,16 @@
 </template>
 
 <script>
+
+import profile from './profile.vue'
+
 export default{
     name:'blp',
     props: {
-        msg:String
+        msg:String,
+    },
+    components: {
+        profile
     },
     data(){ 
     return {
@@ -84,7 +83,7 @@ input[type=email] {
     padding: 10px 25px;
 }
 .btn-primary{
-    margin-left: 415px;
+    margin-left: 465px;
     
 }
 </style>
