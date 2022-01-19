@@ -4,31 +4,33 @@
         v-for="(work,count) in works"
         v-bind:key="count" ><br>
             <label >{{count+1}}:</label><br>
-            <input type="text" placeholder="Keywords" v-model="work.key"><br> 
+            <input type="text" placeholder="Highlights" v-model="work.high"><br> 
         </div><br>
-            <button @click="addKeywords">+KEYWORDS</button><br>
+            <input type="button" @click="addHighlights" value="+HIGHLIGHTS"><br>
+        data:{{works}}
     </div>
+
 </template>
 <script>
     export default{
-        name:'keywords',
+        name:'highlights',
             props:{
-            keywords:Array
-        },
-        data(){
+                highlights: Array
+            },
+        data() {
             return{
                 works:[
                     {
-                        key:''
+                        high: ''
                     }
                 ]
             }
         },
         methods : {
-            addKeywords(){
+            addHighlights() {
                 this.works.push( {
-                    key:''
-                } )
+                    high:''
+                })
             }
         }
     }
@@ -41,5 +43,5 @@
         outline-style: none;
         padding: 5px 25px;
         margin: 0 4px;
-    }
+}
 </style>

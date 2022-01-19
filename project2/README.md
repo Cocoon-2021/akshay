@@ -1,4 +1,4 @@
-# newapp
+# finalprojects
 
 ## Project setup
 ```
