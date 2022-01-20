@@ -10,7 +10,11 @@
         </div>
         <div v-show = "count === 2">
             <Work/>
-            <input type="button" @click="prev()" value="Previous">
+            <div class="mainSection">
+                <div class="section">
+                    <input type="button" @click="prev()" value="Previous">
+                </div>
+            </div>
             <div class="mainSubSection">
                 <div class="subSection">
                     <input type="button" @click="next()" value="Next">
@@ -19,7 +23,11 @@
         </div>
         <div v-show = "count === 3">
             <Volunteer/>
-            <input type="button" @click="prev()" value="Previous">
+            <div class="mainSection">
+                <div class="section">
+                    <input type="button" @click="prev()" value="Previous">
+                </div>
+            </div>
             <div class="mainSubSection">
                 <div class="subSection">
                     <input type="button" @click="next()" value="Next">
@@ -28,7 +36,11 @@
         </div>
         <div v-show = "count === 4">
             <Education/>
-            <input type="button" @click="prev()" value="Previous">
+            <div class="mainSection">
+                <div class="section">
+                    <input type="button" @click="prev()" value="Previous">
+                </div>
+            </div>
             <div class="mainSubSection">
                 <div class="subSection">
                     <input type="button" @click="next()" value="Next">
@@ -37,7 +49,11 @@
         </div>
         <div v-show = "count === 5">
             <Awards/>
-            <input type="button" @click="prev()" value="Previous">
+            <div class="mainSection">
+                <div class="section">
+                    <input type="button" @click="prev()" value="Previous">
+                </div>
+            </div>
             <div class="mainSubSection">
                 <div class="subSection">
                     <input type="button" @click="next()" value="Next">
@@ -46,7 +62,11 @@
         </div>
         <div v-show = "count === 6">
             <Certificate/>
-            <input type="button" @click="prev()" value="Previous">
+            <div class="mainSection">
+                <div class="section">
+                    <input type="button" @click="prev()" value="Previous">
+                </div>
+            </div>
             <div class="mainSubSection">
                 <div class="subSection">
                     <input type="button" @click="next()" value="Next">
@@ -55,7 +75,11 @@
         </div> 
         <div v-show = "count === 7">
             <Publications/>
-            <input type="button" @click="prev()" value="Previous">
+            <div class="mainSection">
+                <div class="section">
+                    <input type="button" @click="prev()" value="Previous">
+                </div>
+            </div>
             <div class="mainSubSection">
                 <div class="subSection">
                     <input type="button" @click="next()" value="Next">
@@ -64,7 +88,11 @@
         </div>
         <div v-show = "count === 8">
             <Skills/>
-            <input type="button" @click="prev()" value="Previous">
+            <div class="mainSection">
+                <div class="section">
+                    <input type="button" @click="prev()" value="Previous">
+                </div>
+            </div>
             <div class="mainSubSection">
                 <div class="subSection">
                     <input type="button" @click="next()" value="Next">
@@ -73,7 +101,11 @@
         </div>  
         <div v-show = "count === 9">
             <Language/>
-            <input type="button" @click="prev()" value="Previous">
+            <div class="mainSection">
+                <div class="section">
+                    <input type="button" @click="prev()" value="Previous">
+                </div>
+            </div>
             <div class="mainSubSection">
                 <div class="subSection">
                     <input type="button" @click="next()" value="Next">
@@ -82,7 +114,11 @@
         </div> 
         <div v-show = "count === 10">
             <Interests/>
-            <input type="button" @click="prev()" value="Previous">
+            <div class="mainSection">
+                <div class="section">
+                    <input type="button" @click="prev()" value="Previous">
+                </div>
+            </div>
             <div class="mainSubSection">
                 <div class="subSection">
                     <input type="button" @click="next()" value="Next">
@@ -91,7 +127,11 @@
         </div>
         <div v-show = "count === 11">
             <References/>
-            <input type="button" @click="prev()" value="Previous">
+            <div class="mainSection">
+                <div class="section">
+                    <input type="button" @click="prev()" value="Previous">
+                </div>
+            </div>
             <div class="mainSubSection">
                 <div class="subSection">
                     <input type="button" @click="next()" value="Next">
@@ -100,7 +140,11 @@
         </div>
         <div v-show = "count === 12">
             <Projects/>
-            <input type="button" @click="prev()" value="Previous">
+            <div class="mainSection">
+                <div class="section">
+                    <input type="button" @click="prev()" value="Previous">
+                </div>
+            </div>
             <div class="mainSubSection">
                 <div class="subSection">
                     <input type="button" @click="next()" value="Next">
@@ -109,9 +153,13 @@
         </div> 
         <div v-show = "count === 13">
             <CoverLetter/>
-            <input type="button" @click="prev()" value="Previous">
-            <input type="button"  value="DOWNLOAD JSON">
-            <input type="button"  value="BUILD">
+            <div class="mainSubSection">
+                <div class="subSection">
+                    <input type="button" @click="prev()" value="Previous">
+                <input type="button"  value="DOWNLOAD JSON">
+                <input type="button"  value="BUILD">
+                </div>
+            </div>
         </div>     
     </div>
 </template>
@@ -173,7 +221,17 @@
         display: flex;
         overflow: hidden;
         float: right;
-        
-        
+    }
+    .mainSection{
+        margin: auto;
+        justify-content: center;
+        width: 40%;
+        margin-top: 10px;
+    }
+    .section{
+        margin: auto;
+        display: flex;
+        overflow: hidden;
+        float: left;
     }
 </style>

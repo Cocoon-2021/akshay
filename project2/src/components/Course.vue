@@ -1,12 +1,19 @@
 <template>
     <div>
-        <div 
-        v-for="(work,count) in works"
-        v-bind:key="count" ><br>
-            <label >{{count+1}}:</label><br>
-            <input type="text" placeholder="Courses" name="course" v-model="work.course"><br> 
-        </div><br>
-            <input type="button" @click="addKeywords" value="+COURSES">
+        <div class="mainSection"
+            v-for="(coursed,count) in courses"
+            v-bind:key="count" >
+            <div class="section">
+                <label v-if="!count==0">{{count}}:</label>
+                <span v-if="!count==0">x</span>
+            <div class="section">
+                <input type="text" placeholder="Courses" name="course" v-model="coursed.course">
+            </div>
+            <div class="mainSubSection">
+                <div class="subSection">
+                    <input type="button" @click="addCourses" value="+COURSES">
+                </div>
+            </div>    
     </div>
 </template>
 <script>
@@ -17,7 +24,7 @@
         },
         data(){
             return{
-                works:[
+                courses:[
                     {
                         course:''
                     }
@@ -25,8 +32,8 @@
             }
         },
         methods : {
-            addKeywords(){
-                this.works.push( {
+            addCourses(){
+                this.courses.push( {
                     course: ''
                 } )
             }
@@ -41,5 +48,35 @@
         outline-style: none;
         padding: 5px 25px;
         margin: 0 4px;
+    }
+    .section{
+        margin: auto;
+        display: flex;
+        overflow: hidden;
+        
+    }
+    .section label{
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .mainSection{
+        margin: auto;
+        justify-content: center;
+        width: 40%;
+        margin-top: 10mm;
+    }
+    .mainSubSection{
+        margin: auto;
+        justify-content: center;
+        width: 40%;
+        margin-top: 10px;
+    }
+    .subSection{
+        margin: auto;
+        display: flex;
+        overflow: hidden;
+        
+        
     }
 </style>

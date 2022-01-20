@@ -1,31 +1,41 @@
 <template>
-        <form>
-            <div>
-                <div 
-                v-for="(educated,count) in educate"
-                v-bind:key="count"><br>
-                    <h4>Education</h4>
-                    <label >{{count+1}}:</label><br>
-                    <input type="text" placeholder="institution" v-model="educated.institution" required> 
-                    <input type="text" placeholder="URL" v-model="educated.url" required><br>
-                    <input type="text" placeholder="Area" v-model="educated.area">
-                    <input type="text" placeholder="Study Type" v-model="educated.studyType" required><br>
-                    <input type="text" placeholder="Start Date" v-model="educated.startDate" required>
-                    <input type="text" placeholder="End Date" v-model="educated.endDate" required><br>
-                    <input type="text" placeholder="Score" v-model="educated.Score" required><br>
-                    <input type="text" placeholder="Course" v-model="educated.course" required><br>
-                    
-                </div>
+    <form>
+        <div class="mainSection"
+            v-for="(educated,count) in educate"
+            v-bind:key="count">
+            <div class="section">
+                <label v-if="!count==0">{{count}}:</label>
+                <span v-if="!count==0">x</span>
             </div>
-                    <Course/><br>
-                    <button @click="addEducation">+EDUCATION</button><br>
-              
-        </form>
+            <h4>Education</h4>
+            <div class="section">
+                <input type="text" placeholder="institution" name="institution" v-model="educated.institution" required> 
+                <input type="text" placeholder="URL" name="url" v-model="educated.url" required>
+            </div>
+            <div class="section">
+                <input type="text" placeholder="Area" name="area" v-model="educated.area">
+                <input type="text" placeholder="Study Type" name="studyType" v-model="educated.studyType" required>
+            </div>    
+            <div class="section">     
+                <input type="text" placeholder="Start Date" name="startDate" v-model="educated.startDate" required>
+                <input type="text" placeholder="End Date" name="endDate" v-model="educated.endDate" required>
+            </div>
+            <div class="section">
+                <input type="text" placeholder="Score" v-model="educated.Score" required>
+            </div>
+        </div>
+            <Course/>
+            <div class="mainSubSection">
+                <div class="subSection">
+                    <input type="button" @click="addEducation" value="+EDUCATION">
+                </div>
+            </div> 
+    </form>
 </template>
 <script>
     import Course from './Course.vue'
 
-export default {
+    export default {
         name:'Education',
             props: {
                 Education: Array
@@ -67,9 +77,6 @@ export default {
 
 </script>
 <style scoped>
-    form{
-        margin-left: 360px;
-    }
     input[type=text] {
         background: transparent;
         border: none;
@@ -78,7 +85,32 @@ export default {
         padding: 10px 25px;
         margin: 0 4px;
     }
-    .second-btn{
-        margin-left: 395px;
+    .section{
+        margin: auto;
+        display: flex;
+        overflow: hidden;
+        
+    }
+    .section label{
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .mainSection{
+        margin: auto;
+        justify-content: center;
+        width: 40%;
+        margin-top: 10mm;
+    }
+    .mainSubSection{
+        margin: auto;
+        justify-content: center;
+        width: 40%;
+        margin-top: 10px;
+    }
+    .subSection{
+        margin: auto;
+        display: flex;
+        overflow: hidden;
     }
 </style>

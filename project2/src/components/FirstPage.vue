@@ -15,7 +15,9 @@
                 <input type="text" placeholder="Phone" name="phone" v-model="home.phone">
                 <input type="text" placeholder="URL" name="url" v-model="home.url">
             </div>
-            <div class="section"><textarea placeholder="summary" name="summary" v-model="home.summary" class="box"></textarea></div>
+            <div class="section">
+                <textarea placeholder="summary" name="summary" v-model="home.summary" class="box"></textarea>
+            </div>
         </div>
         <div class="mainSection">
             <h4>Location</h4>
@@ -90,6 +92,7 @@
         outline-style: none;
         padding: 21px 24px;
         width: 100%;
+        resize: none;
     }
 
     .section{

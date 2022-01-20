@@ -1,25 +1,36 @@
 <template>
     <form>
-        <div>
-            <div 
+        <div class="mainSection"
             v-for="(work,count) in works"
-            v-bind:key="count" ><br>
-                <h4>Awards</h4>
-                <label >{{count+1}}:</label><br>
+            v-bind:key="count" >
+        <div class="section">
+            <label v-if="!count==0">{{count}}:</label>
+            <span v-if="!count==0">x</span>
+        </div>
+            <h4>Awards</h4>
+            <div class="section">
                 <input type="text" placeholder="Title" name="title" v-model="work.title">
-                <input type="text" placeholder="Date" name="date" v-model="work.date"><br>
-                <input type="text" placeholder="Awarder" name="awards" v-model="work.awarder"><br>
-                <input type="text" placeholder="Summary" name="summary" v-model="work.summary">
-            </div><br>
-                <input type="button" @click="addAwards" value="+AWARDS">
+                <input type="text" placeholder="Date" name="date" v-model="work.date">
+            </div>
+            <div class="section">
+                <input type="text" placeholder="Awarder" name="awards" v-model="work.awarder">
+            </div>
+            <div class="section">
+                <textarea placeholder="summary" name="summary" v-model="work.summary" class="box"></textarea>
+            </div>
+        </div>
+        <div class="mainSubSection">
+            <div class="subSection">
+                <input type="button" value="+AWARDS" @click="addAwards">
+            </div>
         </div>
     </form>
 </template>
 <script>
     export default{
-        name:'awards',
+        name:'Awards',
             props:{
-            awards:Array
+            Awards:Array
         },
         data(){
             return{
@@ -51,7 +62,44 @@
         border: none;
         border-bottom: 1px solid #000000;
         outline-style: none;
-        padding: 5px 25px;
+        padding: 10px 25px;
         margin: 0 4px;
+    }
+    .box{
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #000000;
+        outline-style: none;
+        padding: 21px 24px;
+        width: 100%;
+        resize: none;
+    }
+    .section{
+        margin: auto;
+        display: flex;
+        overflow: hidden;
+        
+    }
+    .section label{
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .mainSection{
+        margin: auto;
+        justify-content: center;
+        width: 40%;
+        margin-top: 10mm;
+    }
+    .mainSubSection{
+        margin: auto;
+        justify-content: center;
+        width: 40%;
+        margin-top: 10px;
+    }
+    .subSection{
+        margin: auto;
+        display: flex;
+        overflow: hidden;
     }
 </style>

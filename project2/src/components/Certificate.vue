@@ -1,22 +1,27 @@
 <template>
         <form>
-            <div>
-                <div 
-                v-for="(work,count) in works"
-                v-bind:key="count"><br>
-                    <h4>Certificate</h4>
-                    <label >{{count+1}}:</label><br>
-                    <input type="text" placeholder="Name" v-model="work.name" required> 
-                    <input type="text" placeholder="Date" v-model="work.date" required><br>
-                    <input type="text" placeholder="URL" v-model="work.url"><br>
-                    <input type="text" placeholder="Issuer" v-model="work.issuer" required> 
-                    
+                <div class="mainSection"
+                    v-for="(work,count) in works"
+                    v-bind:key="count">
+                    <div class="section">
+                        <label v-if="!count==0">{{count}}:</label>
+                        <span v-if="!count==0">x</span>
+                    </div>
+                        <h4 v-if="count==0">Certificate</h4>
+                    <div class="section">
+                        <input type="text" placeholder="Name" name="name" v-model="work.name" required> 
+                        <input type="text" placeholder="Date" name="date" v-model="work.date" required>
+                    </div>
+                    <div class="section">
+                        <input type="text" placeholder="URL" name="url" v-model="work.url">
+                        <input type="text" placeholder="Issuer" name="issuer" v-model="work.issuer" required> 
+                    </div>
                 </div>
-            </div>
-                    <highlights/><br>
-                    <keywords/><br>
-                    <input type="button" @click="addcertificate" value="+certificate">
-              
+                <div class="mainSubSection">
+                    <div class="subSection">
+                        <input type="button" @click="addCertificate" value="+certificate">
+                    </div>
+                </div>
         </form>
 </template>
 <script>
@@ -39,7 +44,7 @@ export default {
             }
         },
         methods : {
-            addWorks(){
+            addCertificate(){
                 this.works.push({
                     name: '',
                     date: '',
@@ -52,9 +57,6 @@ export default {
 
 </script>
 <style scoped>
-    form{
-        margin-left: 360px;
-    }
     input[type=text] {
         background: transparent;
         border: none;
@@ -63,7 +65,32 @@ export default {
         padding: 10px 25px;
         margin: 0 4px;
     }
-    .second-btn{
-        margin-left: 395px;
+    .section{
+        margin: auto;
+        display: flex;
+        overflow: hidden;
+        
+    }
+    .section label{
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .mainSection{
+        margin: auto;
+        justify-content: center;
+        width: 40%;
+        margin-top: 10mm;
+    }
+    .mainSubSection{
+        margin: auto;
+        justify-content: center;
+        width: 40%;
+        margin-top: 10px;
+    }
+    .subSection{
+        margin: auto;
+        display: flex;
+        overflow: hidden;
     }
 </style>
