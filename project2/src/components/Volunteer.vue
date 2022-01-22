@@ -6,7 +6,7 @@
                 v-bind:key="count">
                 <div class="section">
                     <label v-if="!count==0">{{count}}:</label>
-                    <span v-if="!count==0">x</span>
+                    <span v-if="!count==0" @click="deleteTab(count)" class="deleteTab">x</span>
                 </div>
                 <h4>Volunteer</h4>
                 <div class="section">
@@ -15,20 +15,20 @@
                 </div>
                 <div class="section">
                     <input type="text" placeholder="URL" name="url" v-model="volunter.url" required>
-                    <input type="text" placeholder="Start Date" name="startDate" v-model="volunter.startDate">
+                    <input type="text" placeholder="Start Date" name="startDate" onfocus="(this.type='date')" v-model="volunter.startDate">
                 </div>
-                <input type="text" placeholder="End Date" name="endDate" v-model="volunter.endDate">
+                <input type="text" placeholder="End Date" name="endDate" onfocus="(this.type='date')" v-model="volunter.endDate">
                 <div class="section">
                     <textarea placeholder="summary" name="summary" v-model="volunter.summary" class="box"></textarea>
                 </div>
             </div>
+                <div class="mainSubSection">
+                    <div class="subSection">
+                        <input type="button" @click="addVolunteer" value="+VOLUNTEER">
+                    </div>
+                </div>
         </div>
             <Highlights/>
-            <div class="mainSubSection">
-                <div class="subSection">
-                    <input type="button" @click="addVolunteer" value="+VOLUNTEER">
-                </div>
-            </div>
     </form>
 </template>
 
@@ -67,7 +67,10 @@
                             endDate: '',
                             summary: ''
                     })
-                }
+                },
+                deleteTab(count){
+                    this.volunteers.splice(count,1)
+            }
             }
         }
 
@@ -90,6 +93,15 @@
         padding: 21px 24px;
         width: 100%;
         resize: none;
+    }
+    input[type=date] {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #000000;
+        outline-style: none;
+        padding: 10px 0px;
+        margin:0 4px;
+        width: 50%;
     }
     .section{
         margin: auto;
@@ -118,7 +130,8 @@
         margin: auto;
         display: flex;
         overflow: hidden;
-        
-        
+    }
+    .deleteTab{
+        cursor: pointer;
     }
 </style>

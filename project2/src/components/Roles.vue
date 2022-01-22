@@ -5,15 +5,7 @@
             v-bind:key="count" >
             <div class="section">
                 <label v-if="!count==0">{{count}}:</label>
-                <span v-if="!count==0">x</span>
-            </div>
-            <h4>Roles</h4>
-            <div class="section">
-                <input type="text" placeholder="Start Date" name="StartDate" v-model="work.StartDate"> 
-                <input type="text" placeholder="End Date" name="EndDate" v-model="work.EndDate" required>
-            </div> 
-            <div class="section">
-                <input type="text" placeholder="URL" name="Url" v-model="work.Url" required>
+                <span v-if="!count==0" @click="deleteTab(count)" class="deleteTab">x</span>
             </div>
             <div class="section">
                 <input type="text" placeholder="Roles" name="Roles" v-model="work.Roles">
@@ -52,6 +44,9 @@
                         Url: '',
                         Role: ''
                 })
+            },
+            deleteTab(count){
+                this.works.splice(count,1)
             }
         }
     }
@@ -80,7 +75,7 @@
         margin: auto;
         justify-content: center;
         width: 40%;
-        margin-top: 10mm;
+        margin-top: 6mm;
     }
     .mainSubSection{
         margin: auto;
@@ -92,5 +87,8 @@
         margin: auto;
         display: flex;
         overflow: hidden;
+    }
+    .deleteTab{
+        cursor: pointer;
     }
 </style>

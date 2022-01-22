@@ -5,7 +5,7 @@
                 v-bind:key="count">
                 <div class="section">
                     <label v-if="!count==0">{{count}}:</label>
-                    <span v-if="!count==0">x</span>
+                    <span v-if="!count==0" @click="deleteTab(count)" class="deleteTab">x</span>
                 </div>
                 <h4 v-if="count==0">Publication</h4>
                 <div class="section">
@@ -20,13 +20,13 @@
                     <textarea placeholder="summary" name="summary" v-model="work.summary" class="box"></textarea>
                 </div> 
             </div>
+                <div class="mainSubSection">
+                    <div class="subSection">
+                        <input type="button" @click="addPublication" value="+PUBLICATION">
+                    </div>
+                </div>
                 <Highlights/><br>
                 <KeyWords/><br>
-            <div class="mainSubSection">
-                <div class="subSection">
-                    <input type="button" @click="addPublication" value="+Publication">
-                </div>
-            </div>
         </form>
 </template>
 <script>
@@ -63,6 +63,9 @@ export default {
                     url: '',
                     summary: ''
                 })
+            },
+            deleteTab(count){
+                this.works.splice(count,1)
             }
         }
     }
@@ -113,5 +116,8 @@ export default {
         margin: auto;
         display: flex;
         overflow: hidden;
+    }
+    .deleteTab{
+        cursor: pointer;
     }
 </style>

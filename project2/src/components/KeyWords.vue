@@ -5,7 +5,7 @@
             v-bind:key="count" >
                 <div class="section">
                     <label v-if="!count==0">{{count}}:</label>
-                    <span v-if="!count==0">x</span>
+                    <span v-if="!count==0" @click="deleteTab(count)" class="deleteTab">x</span>
                 </div>
                 <div class="section">
                     <input type="text" placeholder="Keywords" name="key" v-model="work.key">
@@ -39,6 +39,9 @@
                 this.works.push( {
                     key:''
                 } )
+            },
+            deleteTab(count){
+                 this.works.splice(count,1)
             }
         }
     }
@@ -61,14 +64,14 @@
     }
     .section label{
         width: 100%;
-        margin-top: 15px;
+        margin-top: 3px;
     }
 
     .mainSection{
         margin: auto;
         justify-content: center;
         width: 40%;
-        margin-top: 10mm;
+        margin-top: 6mm;
     }
     .mainSubSection{
         margin: auto;
@@ -80,5 +83,8 @@
         margin: auto;
         display: flex;
         overflow: hidden;
+    }
+    .deleteTab{
+        cursor: pointer;
     }
 </style>

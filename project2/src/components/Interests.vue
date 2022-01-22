@@ -5,19 +5,20 @@
                 v-bind:key="count">
                 <div class="section">
                     <label v-if="!count==0">{{count}}:</label>
-                    <span v-if="!count==0">x</span>
+                    <span v-if="!count==0" @click="deleteTab(count)" class="deleteTab">x</span>
                 </div>
                 <h4 v-if="count==0">Interests</h4>
                 <div class="section">
                     <input type="text" placeholder="Name" name="name" v-model="work.name" required>
                 </div>
             </div>
-                <KeyWords/>
                 <div class="mainSubSection">
                     <div class="subSection">
                         <input type="button" @click="addInterests" value="+INTERESTS">
                     </div>
                 </div>
+                <KeyWords/>
+                
         </form>
 </template>
 <script>
@@ -26,7 +27,7 @@ import KeyWords from './KeyWords.vue'
 export default {
         name:'Interests',
             props: {
-                work: Array
+                Work: Array
             },
             components:{
                 KeyWords
@@ -35,7 +36,7 @@ export default {
             return{
                 works:[
                     {
-                        name: '',
+                    name: '',
                     }
                 ]
             }
@@ -45,7 +46,10 @@ export default {
                 this.works.push({
                     name: '',
                 })
-            }
+            },
+            deleteTab(count){
+            this.works.splice(count,1)
+        }
         }
     }
 
@@ -86,5 +90,8 @@ export default {
         margin: auto;
         display: flex;
         overflow: hidden;
+    }
+    .deleteTab{
+        cursor: pointer;
     }
 </style>

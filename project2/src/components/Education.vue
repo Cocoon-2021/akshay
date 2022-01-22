@@ -5,7 +5,7 @@
             v-bind:key="count">
             <div class="section">
                 <label v-if="!count==0">{{count}}:</label>
-                <span v-if="!count==0">x</span>
+                <span v-if="!count==0" @click="deleteTab(count)" class="deleteTab">x</span>
             </div>
             <h4>Education</h4>
             <div class="section">
@@ -17,19 +17,19 @@
                 <input type="text" placeholder="Study Type" name="studyType" v-model="educated.studyType" required>
             </div>    
             <div class="section">     
-                <input type="text" placeholder="Start Date" name="startDate" v-model="educated.startDate" required>
-                <input type="text" placeholder="End Date" name="endDate" v-model="educated.endDate" required>
+                <input type="text" placeholder="Start Date" name="startDate" onfocus="(this.type='date')" v-model="educated.startDate" required>
+                <input type="text" placeholder="End Date" name="endDate" onfocus="(this.type='date')" v-model="educated.endDate" required>
             </div>
             <div class="section">
                 <input type="text" placeholder="Score" v-model="educated.Score" required>
             </div>
         </div>
-            <Course/>
             <div class="mainSubSection">
                 <div class="subSection">
                     <input type="button" @click="addEducation" value="+EDUCATION">
                 </div>
             </div> 
+            <Course/>
     </form>
 </template>
 <script>
@@ -71,6 +71,9 @@
                         score: '',
                         course: ''
                 })
+            },
+            deleteTab(count){
+                 this.educate.splice(count,1)
             }
         }
     }
@@ -84,6 +87,15 @@
         outline-style: none;
         padding: 10px 25px;
         margin: 0 4px;
+    }
+    input[type=date] {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #000000;
+        outline-style: none;
+        padding: 10px 25px;
+        margin-left: 7px;
+        width: 50%;
     }
     .section{
         margin: auto;
@@ -112,5 +124,8 @@
         margin: auto;
         display: flex;
         overflow: hidden;
+    }
+    .deleteTab{
+        cursor: pointer;
     }
 </style>

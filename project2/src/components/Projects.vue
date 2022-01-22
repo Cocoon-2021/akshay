@@ -5,7 +5,7 @@
                 v-bind:key="count">
                 <div class="section">
                     <label v-if="!count==0">{{count}}:</label>
-                    <span v-if="!count==0">x</span>
+                    <span v-if="!count==0" @click="deleteTab(count)" class="deleteTab">x</span>
                 </div>
                 <h4>Projects</h4>
                 <div class="section">
@@ -14,19 +14,26 @@
                 <div class="section">
                     <textarea placeholder="description" name="description" v-model="work.description" class="box"></textarea>
                 </div>
-                <Highlights/>
-                <KeyWords/>
-                <Roles/>
+                <div class="section">
+                    <input type="text" placeholder="Start Date" name="StartDate" v-model="work.StartDate"> 
+                    <input type="text" placeholder="End Date" name="EndDate" v-model="work.EndDate" required>
+                </div> 
+                <div class="section">
+                    <input type="text" placeholder="URL" name="Url" v-model="work.Url" required>
+                </div>
                 <div class="section">
                     <input type="text" placeholder="Entity" name="Entity" v-model="work.Entity" required> 
                     <input type="text" placeholder="Type" name="Type" v-model="work.Type" required> 
                 </div>
             </div>
-            <div class="mainSubSection">
-                <div class="subSection">
-                    <input type="button" @click="addProjects" value="+Projects">
+                <div class="mainSubSection">
+                    <div class="subSection">
+                        <input type="button" @click="addProjects" value="+Projects">
+                    </div>
                 </div>
-            </div>
+                <Highlights/>
+                <KeyWords/>
+                <Roles/>
         </form>
 </template>
 <script>
@@ -63,6 +70,9 @@ export default {
                     Entity: '',
                     Type: ' '
                 })
+            },
+            deleteTab(count){
+                this.works.splice(count,1)
             }
         }
     }
@@ -113,5 +123,8 @@ export default {
         margin: auto;
         display: flex;
         overflow: hidden;
+    }
+    .deleteTab{
+        cursor: pointer;
     }
 </style>

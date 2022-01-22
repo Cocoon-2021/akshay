@@ -5,7 +5,7 @@
             v-bind:key="count"  >
             <div class="section">
                 <label v-if="!count==0">{{count}}:</label>
-                <span v-if="!count==0">x</span>
+                <span v-if="!count==0" @click="deleteTab(count)" class="deleteTab">x</span>
             </div>
                 <h4 v-if="count==0">Profile</h4>
                     <div class="section">
@@ -15,7 +15,6 @@
                     <div class="section" style="fwidth:100%">
                         <input style="float:left;" type="text" placeholder="Username" name="username" v-model="profile.username">
                     </div> 
-        <!-- profile:{{profiles}} -->
         </div>
         <div class="mainSubSection">
             <div class="subSection">
@@ -48,6 +47,9 @@
                     url: '',
                     username: ''
                 })
+            },
+            deleteTab(count){
+                 this.profiles.splice(count,1)
             }
         }
     }
@@ -89,7 +91,8 @@
         margin: auto;
         display: flex;
         overflow: hidden;
-        
-        
+    }
+    .deleteTab{
+        cursor: pointer;
     }
 </style>

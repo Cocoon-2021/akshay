@@ -5,7 +5,7 @@
             v-bind:key="count" >
             <div class="section">
                 <label v-if="!count==0">{{count}}:</label>
-                <span v-if="!count==0">x</span>
+                <span v-if="!count==0" @click="deleteTab(count)" class="deleteTab">x</span>
             </div>
             <div class="section">
                 <input type="text" placeholder="Highlights" v-model="work.high">
@@ -16,15 +16,14 @@
                 <input type="button" @click="addHighlights" value="+HIGHLIGHTS">
             </div>
         </div>
-        <!-- data:{{works}} -->
     </div>
-
 </template>
+
 <script>
     export default{
-        name:'highlights',
+        name:'Highlights',
             props:{
-                highlights: Array
+                Highlights: Array
             },
         data() {
             return{
@@ -40,6 +39,9 @@
                 this.works.push( {
                     high:''
                 })
+            },
+            deleteTab(count){
+                 this.works.splice(count,1)
             }
         }
     }
@@ -81,7 +83,8 @@
         margin: auto;
         display: flex;
         overflow: hidden;
-        
-        
+    }
+    .deleteTab{
+        cursor: pointer;
     }
 </style>

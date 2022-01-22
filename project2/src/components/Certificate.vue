@@ -5,12 +5,12 @@
                     v-bind:key="count">
                     <div class="section">
                         <label v-if="!count==0">{{count}}:</label>
-                        <span v-if="!count==0">x</span>
+                        <span v-if="!count==0" @click="deleteTab(count)" class="deleteTab">x</span>
                     </div>
                         <h4 v-if="count==0">Certificate</h4>
                     <div class="section">
                         <input type="text" placeholder="Name" name="name" v-model="work.name" required> 
-                        <input type="text" placeholder="Date" name="date" v-model="work.date" required>
+                        <input type="text" placeholder="Date" name="date" v-model="work.date" onfocus="(this.type='date')" required>
                     </div>
                     <div class="section">
                         <input type="text" placeholder="URL" name="url" v-model="work.url">
@@ -51,6 +51,9 @@ export default {
                     url: '',
                     issuer: '',
                 })
+            },
+            deleteTab(count){
+                this.works.splice(count,1)
             }
         }
     }
@@ -64,6 +67,15 @@ export default {
         outline-style: none;
         padding: 10px 25px;
         margin: 0 4px;
+    }
+    input[type=date] {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #000000;
+        outline-style: none;
+        padding: 10px 25px;
+        margin-left: 7px;
+        width: 50%;
     }
     .section{
         margin: auto;
@@ -92,5 +104,8 @@ export default {
         margin: auto;
         display: flex;
         overflow: hidden;
+    }
+    .deleteTab{
+        cursor: pointer;
     }
 </style>

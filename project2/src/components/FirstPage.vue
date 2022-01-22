@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="colorings">
     <form>
         <div class="mainSection">
             <h4>Basics</h4>
@@ -39,7 +39,7 @@
 </div>
 </template>
 <script>
-    import Profile from '../components/Profile.vue'
+    import Profile from './Profile.vue'
     export default{
         name:'FirstPage',
         components:{
@@ -107,4 +107,8 @@
         justify-content: center;
         width: 40%;
     }
+
+    /* .colorings{
+        background-color: rgba(214, 227, 252, 0.623);
+    } */
 </style>

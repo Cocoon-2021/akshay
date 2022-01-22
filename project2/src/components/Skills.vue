@@ -5,7 +5,7 @@
                 v-bind:key="count">
                 <div class="section">
                     <label v-if="!count==0">{{count}}:</label>
-                    <span v-if="!count==0">x</span>
+                    <span v-if="!count==0" @click="deleteTab(count)" class="deleteTab">x</span>
                 </div>
                 <h4 v-if="count==0">Skills</h4>
                 <div class="section">
@@ -13,12 +13,12 @@
                     <input type="text" placeholder="Level" v-model="work.levels" required>
                 </div>
             </div>
-                <KeyWords/>
-                <div class="mainSubSection">
-                    <div class="subSection">
-                        <input type="button" @click="addSkills" value="+Skills">
-                    </div>
+            <div class="mainSubSection">
+                <div class="subSection">
+                    <input type="button" @click="addSkills" value="+SKILLS">
                 </div>
+            </div>
+                <KeyWords/>
         </form>
 </template>
 <script>
@@ -51,6 +51,9 @@ export default {
                     keywords: '',
                 })
             }
+        },
+        deleteTab(count){
+            this.works.splice(count,1)
         }
     }
 
@@ -72,14 +75,14 @@ export default {
     }
     .section label{
         width: 100%;
-        margin-top: 15px;
+        margin-top: 4px;
     }
 
     .mainSection{
         margin: auto;
         justify-content: center;
         width: 40%;
-        margin-top: 10mm;
+        margin-top: 4mm;
     }
     .mainSubSection{
         margin: auto;
@@ -91,5 +94,8 @@ export default {
         margin: auto;
         display: flex;
         overflow: hidden;
+    }
+    .deleteTab{
+        cursor: pointer;
     }
 </style>

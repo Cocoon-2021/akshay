@@ -5,7 +5,7 @@
                 v-bind:key="count">
                 <div class="section">
                     <label v-if="!count==0">{{count}}:</label>
-                    <span v-if="!count==0">x</span>
+                    <span v-if="!count==0" @click="deleteTab(count)" class="deleteTab">x</span>
                 </div>
                     <h4 v-if="count==0">References</h4>
                     <div class="section">
@@ -43,7 +43,10 @@ export default {
                     name: '',
                     references: '',
                 })
-            }
+            },
+            deleteTab(count){
+                this.works.splice(count,1)
+        }
         }
     }
 
@@ -84,5 +87,8 @@ export default {
         margin: auto;
         display: flex;
         overflow: hidden;
+    }
+    .deleteTab{
+        cursor: pointer;
     }
 </style>

@@ -1,24 +1,27 @@
 <template>
-    <div>
-        <div class="mainSection"
+        <div>
+            <div class="mainSection"
             v-for="(coursed,count) in courses"
             v-bind:key="count" >
-            <div class="section">
-                <label v-if="!count==0">{{count}}:</label>
-                <span v-if="!count==0">x</span>
-            <div class="section">
-                <input type="text" placeholder="Courses" name="course" v-model="coursed.course">
+                <div class="section">
+                    <label v-if="!count==0">{{count}}:</label>
+                    <span v-if="!count==0" @click="deleteTab(count)" class="deleteTab">x</span>
+                </div>
+                <div class="section">
+                    <input type="text" placeholder="Course" name="course" v-model="coursed.course">
+                </div>
             </div>
             <div class="mainSubSection">
                 <div class="subSection">
                     <input type="button" @click="addCourses" value="+COURSES">
                 </div>
-            </div>    
-    </div>
+            </div>
+        </div>
+
 </template>
 <script>
     export default{
-        name: 'Course',
+        name:'Course',
             props:{
             Course:Array
         },
@@ -34,13 +37,17 @@
         methods : {
             addCourses(){
                 this.courses.push( {
-                    course: ''
+                    course:''
                 } )
+            },
+            deleteTab(count){
+                this.courses.splice(count,1)
             }
         }
     }
 </script>
 <style scoped>
+
     input[type=text] {
         background: transparent;
         border: none;
@@ -48,6 +55,7 @@
         outline-style: none;
         padding: 5px 25px;
         margin: 0 4px;
+        margin-top: 15px;
     }
     .section{
         margin: auto;
@@ -76,7 +84,8 @@
         margin: auto;
         display: flex;
         overflow: hidden;
-        
-        
+    }
+    .deleteTab{
+        cursor: pointer;
     }
 </style>

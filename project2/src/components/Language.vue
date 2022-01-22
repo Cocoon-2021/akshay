@@ -5,12 +5,17 @@
                 v-bind:key="count">
                 <div class="section">
                     <label v-if="!count==0">{{count}}:</label>
-                    <span v-if="!count==0">x</span>
+                    <span v-if="!count==0" @click="deleteTab(count)" class="deleteTab">x</span>
                 </div>
                 <h4 v-if="count==0">Language</h4>
                 <div class="section">
                     <input type="text" placeholder="Language" name="language" v-model="work.language" required> 
-                    <input type="text" placeholder="Fluency" name="fluency" v-model="work.fluency" required>
+                    <select v-model="work.fluency"> 
+                        <option value="">Select</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advanced">Advanced</option>
+                        <option value="Fluent">Fluent</option>
+                    </select>
                 </div>
             </div>
             <div class="mainSubSection">
@@ -25,7 +30,7 @@
 export default {
         name:'Language',
             props: {
-                work: Array
+                Work: Array
             },
         data(){
             return{
@@ -43,13 +48,24 @@ export default {
                     language: '',
                     fluency: '',
                 })
-            }
+            },
+            deleteTab(count){
+            this.works.splice(count,1)
+        }
         }
     }
 
 </script>
 <style scoped>
     input[type=text] {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #000000;
+        outline-style: none;
+        padding: 10px 25px;
+        margin: 0 4px;
+    }
+    select {
         background: transparent;
         border: none;
         border-bottom: 1px solid #000000;
@@ -65,14 +81,14 @@ export default {
     }
     .section label{
         width: 100%;
-        margin-top: 15px;
+        margin-top: 3px;
     }
 
     .mainSection{
         margin: auto;
         justify-content: center;
         width: 40%;
-        margin-top: 10mm;
+        margin-top: 4mm;
     }
     .mainSubSection{
         margin: auto;
@@ -84,5 +100,8 @@ export default {
         margin: auto;
         display: flex;
         overflow: hidden;
+    }
+    .deleteTab{
+        cursor: pointer;
     }
 </style>
