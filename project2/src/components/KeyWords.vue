@@ -1,4 +1,5 @@
 <template>
+    <form>
         <div>
             <div class="mainSection"
             v-for="(work,count) in works"
@@ -17,7 +18,7 @@
                 </div>
             </div>
         </div>
-
+    </form>
 </template>
 <script>
     export default{

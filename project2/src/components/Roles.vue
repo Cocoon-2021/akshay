@@ -1,22 +1,24 @@
 <template>
-    <div>
-        <div class="mainSection"
-            v-for="(work,count) in works"
-            v-bind:key="count" >
-            <div class="section">
-                <label v-if="!count==0">{{count}}:</label>
-                <span v-if="!count==0" @click="deleteTab(count)" class="deleteTab">x</span>
+    <form>
+        <div>
+            <div class="mainSection"
+                v-for="(work,count) in works"
+                v-bind:key="count" >
+                <div class="section">
+                    <label v-if="!count==0">{{count}}:</label>
+                    <span v-if="!count==0" @click="deleteTab(count)" class="deleteTab">x</span>
+                </div>
+                <div class="section">
+                    <input type="text" placeholder="Roles" name="Roles" v-model="work.Roles">
+                </div> 
             </div>
-            <div class="section">
-                <input type="text" placeholder="Roles" name="Roles" v-model="work.Roles">
-            </div> 
-        </div>
-        <div class="mainSubSection">
-            <div class="subSection">
-                <input type="button" value="+Roles" @click="addRoles">
+            <div class="mainSubSection">
+                <div class="subSection">
+                    <input type="button" value="+Roles" @click="addRoles">
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 </template>
 <script>
     export default{

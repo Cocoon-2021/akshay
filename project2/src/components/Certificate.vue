@@ -1,27 +1,27 @@
 <template>
         <form>
-                <div class="mainSection"
-                    v-for="(work,count) in works"
-                    v-bind:key="count">
-                    <div class="section">
-                        <label v-if="!count==0">{{count}}:</label>
-                        <span v-if="!count==0" @click="deleteTab(count)" class="deleteTab">x</span>
-                    </div>
-                        <h4 v-if="count==0">Certificate</h4>
-                    <div class="section">
-                        <input type="text" placeholder="Name" name="name" v-model="work.name" required> 
-                        <input type="text" placeholder="Date" name="date" v-model="work.date" onfocus="(this.type='date')" required>
-                    </div>
-                    <div class="section">
-                        <input type="text" placeholder="URL" name="url" v-model="work.url">
-                        <input type="text" placeholder="Issuer" name="issuer" v-model="work.issuer" required> 
-                    </div>
+            <div class="mainSection"
+                v-for="(work,count) in works"
+                v-bind:key="count">
+                <div class="section">
+                    <label v-if="!count==0">{{count}}:</label>
+                    <span v-if="!count==0" @click="deleteTab(count)" class="deleteTab">x</span>
                 </div>
-                <div class="mainSubSection">
-                    <div class="subSection">
-                        <input type="button" @click="addCertificate" value="+certificate">
-                    </div>
+                    <h4 v-if="count==0">Certificate</h4>
+                <div class="section">
+                    <input type="text" placeholder="Name" name="name" v-model="work.name" required> 
+                    <input type="text" placeholder="Date" name="date" v-model="work.date" onfocus="(this.type='date')" required>
                 </div>
+                <div class="section">
+                    <input type="text" placeholder="URL" name="url" v-model="work.url">
+                    <input type="text" placeholder="Issuer" name="issuer" v-model="work.issuer" required> 
+                </div>
+            </div>
+            <div class="mainSubSection">
+                <div class="subSection">
+                    <input type="button" @click="addCertificate" value="+certificate">
+                </div>
+            </div>
         </form>
 </template>
 <script>

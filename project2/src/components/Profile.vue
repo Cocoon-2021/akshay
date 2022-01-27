@@ -1,29 +1,37 @@
 <template>
-    <div>
-        <div class="mainSection"
-            v-for="(profile,count) in profiles"
-            v-bind:key="count"  >
-            <div class="section">
-                <label v-if="!count==0">{{count}}:</label>
-                <span v-if="!count==0" @click="deleteTab(count)" class="deleteTab">x</span>
+    <form @click="funCall()">
+        <div>
+            <div class="mainSection"
+                v-for="(profile,count) in profiles"
+                v-bind:key="count"  >
+                <div class="section">
+                    <label v-if="!count==0">{{count}}:</label>
+                    <span v-if="!count==0" @click="deleteTab(count)" class="deleteTab">x</span>
+                </div>
+                    <h4 v-if="count==0">Profile</h4>
+                        <div class="section">
+                            <input type="text" placeholder="Network" name="network" v-model="profile.network"> 
+                            <input type="text" placeholder="URL" name="url" v-model="profile.url" required>
+                        </div>
+                        <div class="section">
+                            <input style="float:left;" type="text" placeholder="Username" name="username" v-model="profile.username"
+                            :class="{ 'is-invalid': submitted && $v.profiles.username.$error }">
+                        </div> 
+                        <div class="section">
+                            <span v-if="submitted && !$v.profiles.username.required" class="invalid">*username field is required</span>
+                        </div>
             </div>
-                <h4 v-if="count==0">Profile</h4>
-                    <div class="section">
-                        <input type="text" placeholder="Network" name="network" v-model="profile.network"> 
-                        <input type="text" placeholder="URL" name="url" v-model="profile.url" required>
-                    </div>
-                    <div class="section" style="fwidth:100%">
-                        <input style="float:left;" type="text" placeholder="Username" name="username" v-model="profile.username">
-                    </div> 
-        </div>
-        <div class="mainSubSection">
-            <div class="subSection">
-                <input type="button" value="+profile" @click="addProfiles">
+            <div class="mainSubSection">
+                <div class="subSection">
+                    <input type="button" value="+profile" @click="addProfiles">
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 </template>
 <script>
+    import {required} from 'vuelidate/lib/validators'
+
     export default{
         name:'Profile',
             props:{
@@ -40,6 +48,13 @@
                 
             }
         },
+        validations:{
+        profiles:{
+            username:{
+                required
+                }
+            }
+        },
         methods : {
             addProfiles() {
                 this.profiles.push( {
@@ -50,6 +65,14 @@
             },
             deleteTab(count){
                  this.profiles.splice(count,1)
+            },
+            funCall(){
+                this.submitted = true
+
+                this.$v.$touch()
+                if(this.$v.$invalid){
+                    return true
+                }
             }
         }
     }
@@ -94,5 +117,9 @@
     }
     .deleteTab{
         cursor: pointer;
+    }
+    span{
+        font-size:12px;
+        color: red;
     }
 </style>

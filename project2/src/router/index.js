@@ -15,9 +15,9 @@ import References from '../components/References.vue'
 import Projects from '../components/Projects.vue'
 import CoverLetter from '../components/CoverLetter.vue'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter) 
 
-const routes = [
+const routes = [ 
   {
     path: '/',
     name: 'Home',
@@ -87,7 +87,7 @@ const routes = [
     path: '/thirteen',
     name: 'CoverLetter',
     component: CoverLetter
-  }
+  } 
 ]
 
 const router = new VueRouter({

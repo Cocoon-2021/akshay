@@ -30,6 +30,7 @@
                 </div>
             </div> 
             <Course/>
+            {{educate}}
     </form>
 </template>
 <script>

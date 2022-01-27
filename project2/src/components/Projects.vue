@@ -15,8 +15,8 @@
                     <textarea placeholder="description" name="description" v-model="work.description" class="box"></textarea>
                 </div>
                 <div class="section">
-                    <input type="text" placeholder="Start Date" name="StartDate" v-model="work.StartDate"> 
-                    <input type="text" placeholder="End Date" name="EndDate" v-model="work.EndDate" required>
+                    <input type="text" placeholder="Start Date" name="StartDate" onfocus="(this.type='date')" v-model="work.StartDate"> 
+                    <input type="text" placeholder="End Date" name="EndDate" onfocus="(this.type='date')" v-model="work.EndDate" required>
                 </div> 
                 <div class="section">
                     <input type="text" placeholder="URL" name="Url" v-model="work.Url" required>
@@ -95,6 +95,15 @@ export default {
         padding: 21px 24px;
         width: 100%;
         resize: none;
+    }
+    input[type=date] {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #000000;
+        outline-style: none;
+        padding: 10px 0px;
+        margin:0 4px;
+        width: 50%;
     }
     .section{
         margin: auto;

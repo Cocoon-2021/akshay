@@ -13,7 +13,7 @@
                     <input type="text" placeholder="Publisher" name="publisher" v-model="work.publisher" required>
                 </div>
                 <div class="section">
-                    <input type="text" placeholder="Release date" name="releaseDate" v-model="work.releaseDate">
+                    <input type="text" placeholder="Release date" name="releaseDate" onfocus="(this.type='date')" v-model="work.releaseDate">
                     <input type="text" placeholder="URL" v-model="work.url" required>
                 </div>
                 <div class="section">
@@ -88,6 +88,15 @@ export default {
         padding: 21px 24px;
         width: 100%;
         resize: none;
+    }
+    input[type=date] {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #000000;
+        outline-style: none;
+        padding: 10px 25px;
+        margin-left: 7px;
+        width: 50%;
     }
     .section{
         margin: auto;
